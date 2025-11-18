@@ -80,6 +80,20 @@
 //   );
 // }
 // export default ChatWindow;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import "./ChatWindow.css";
 import Chat from "./Chat.jsx";
 import { MyContext } from "./MyContext.jsx";
@@ -91,6 +105,7 @@ function ChatWindow() {
   // Remove 'reply' and 'setReply', we will use prevChats for everything
   const {prompt, setPrompt, currThreadId, prevChats, setPrevChats} = useContext(MyContext);
   const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   // This is the new, corrected getReply function
   const getReply = async () => {
@@ -141,6 +156,9 @@ function ChatWindow() {
     setLoading(false);
   }
 
+  const handleProfileClick = () => {
+    setIsOpen(!isOpen);
+  }
   // 6. The useEffect has been completely removed.
 
   return (
@@ -149,13 +167,19 @@ function ChatWindow() {
         <span>
           HelperGPT <i className="fa-solid fa-chevron-down"></i>{" "}
         </span>
-        <div className="userIconDiv">
+        <div className="userIconDiv" onClick={handleProfileClick}>
           <span className="userIcon">
             <i className="fa-solid fa-user"></i>
           </span>
         </div>
       </div>
 
+  {isOpen &&
+  <div className="dropdown">
+    <div className="dropDownItme"> <i className="fa-solid fa-cloud-arrow-up"></i>Upgrade Plan</div>
+    <div className="dropDownItme"><i className="fa=solid fa-gear"></i>Setting</div>
+    <div className="dropDownItme"><i className="fa-solid fa-arrow-right-from-bracket"></i>Log out</div>
+  </div>}
       {/* Chat will now correctly render the 'prevChats' array */}
       <Chat></Chat> 
 

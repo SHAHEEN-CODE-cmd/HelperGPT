@@ -65,3 +65,24 @@ button:hover{
     text-align: center;
     border-top: solid 0.25px rgba(180,180,180, 0.2);
 }
+
+.fa-trash{
+    position: absolute;
+    right: 0px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.history li:hover .fa-trash{
+    opacity: 1;
+    color: white;
+}
+
+.fa-trash:hover{
+    color: rgb(240, 63, 63);
+}
+
+.highlighted{
+    background-color: rgba(180,180,180, 0.1);
+    border-radius: 10px;
+}
